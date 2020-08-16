@@ -72,6 +72,24 @@ namespace MedicalInstitution.Services
             }
         }
 
+        public tblPatient GetUsernamePasswordPatient(string username, string password)
+        {
+            try
+            {
+                using (MedicalInstitutionNedeljniEntities context = new MedicalInstitutionNedeljniEntities())
+                {
+                    tblPatient patient = (from e in context.tblPatients where e.UsernameLogin.Equals(username) where e.PasswordLogin.Equals(password) select e).First();
+                    
+                    return patient;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception" + ex.Message.ToString());
+                return null;
+            }
+        }
+
         public tblPatient GetPatientUsername(string username)
         {
             try

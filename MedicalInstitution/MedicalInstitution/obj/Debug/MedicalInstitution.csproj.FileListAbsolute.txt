@@ -42,3 +42,7 @@ C:\Users\panonit\Desktop\Nedeljni_II_Marko_Lokas\MedicalInstitution\MedicalInsti
 C:\Users\panonit\Desktop\Nedeljni_II_Marko_Lokas\MedicalInstitution\MedicalInstitution\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\panonit\Desktop\Nedeljni_II_Marko_Lokas\MedicalInstitution\MedicalInstitution\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\panonit\Desktop\Nedeljni_II_Marko_Lokas\MedicalInstitution\MedicalInstitution\obj\Debug\MedicalInstitution.csprojAssemblyReference.cache
+C:\Users\panonit\Desktop\Nedeljni_II_Marko_Lokas\MedicalInstitution\MedicalInstitution\obj\Debug\Views\PatientMenu.g.cs
+C:\Users\panonit\Desktop\Nedeljni_II_Marko_Lokas\MedicalInstitution\MedicalInstitution\obj\Debug\Views\PatientMenu.baml
+C:\Users\panonit\Desktop\Nedeljni_II_Marko_Lokas\MedicalInstitution\MedicalInstitution\obj\Debug\Views\AdminMenu.g.cs
+C:\Users\panonit\Desktop\Nedeljni_II_Marko_Lokas\MedicalInstitution\MedicalInstitution\obj\Debug\Views\AdminMenu.baml

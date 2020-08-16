@@ -1,0 +1,6 @@
+Korisničko ime:Administrator
+Lozinka:Administrator
+
+Korisničko ime mora da sadrži najmanje 6 karaktera.
+Lozinka mora da sadrži najmanje 8 karaktera.
+Nakon ":" unesite vaše korisničko ime i lozinku bez razmaka!

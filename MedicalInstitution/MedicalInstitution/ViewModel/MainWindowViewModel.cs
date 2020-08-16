@@ -1,8 +1,10 @@
 ﻿using MedicalInstitution.Command;
 using MedicalInstitution.Models;
 using MedicalInstitution.Services;
+using MedicalInstitution.Views;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -96,6 +98,8 @@ namespace MedicalInstitution.ViewModel
                 isUpdateDoctor = value;
             }
         }
+        string usernameAdmin;
+        string passwordAdmin;
         #endregion
 
         public MainWindowViewModel(MainWindow mainWindow)
@@ -103,9 +107,41 @@ namespace MedicalInstitution.ViewModel
             this.mainWindow = mainWindow;
 
             patient = new tblPatient();
-            
+
             Service s = new Service();
             DoctorList = s.GetAllDoctor().ToList();
+
+            if (!File.Exists(@"..\..\ClinicAccess.txt"))
+            {
+                File.Create(@"..\..\ClinicAccess.txt");
+            }
+            else
+            {
+                string[] lines = System.IO.File.ReadAllLines(@"..\..\ClinicAccess.txt");
+                try
+                {
+                    if (lines.Count() > 2)
+                    {
+                        string UsernameAdminAll = lines[0];
+                        string PasswordAdminAll = lines[1];
+
+                        string[] FirstLine = lines[0].Split(':');
+                        string[] SecondLine = lines[1].Split(':');
+
+                        usernameAdmin = FirstLine[1].Trim();
+                        passwordAdmin = SecondLine[1].Trim();
+                    }
+                    else
+                    {
+                        Xceed.Wpf.Toolkit.MessageBox.Show("Niste uneli ispravno kredencijale admina u dokumentu ClinicAccess.txt\n\n1.Korisnicko ime:Vaše korisničko ime\n2.Lozinka: Vaša lozinka", "ClinicAccess.txt", MessageBoxButton.OK);
+                    }
+                }
+                catch (Exception)
+                {
+                    Xceed.Wpf.Toolkit.MessageBox.Show("Niste uneli ispravno kredencijale admina u dokumentu ClinicAccess.txt\n\n1.Korisnicko ime:Vaše korisničko ime\n2.Lozinka: Vaša lozinka", "ClinicAccess.txt", MessageBoxButton.OK);
+                }
+                
+            }
         }
 
         private ICommand exit;
@@ -175,7 +211,6 @@ namespace MedicalInstitution.ViewModel
             int minLower = 1;
             int minLength = 8;
             int maxLength = 30;
-            string allowedSpecials;
 
             //entered password
             string enteredPassword = mainWindow.txtLozinkaRegistracija.Text.ToString();
@@ -191,7 +226,6 @@ namespace MedicalInstitution.ViewModel
             int number = 0;
             int length = enteredPassword.Length;
             int illegalCharacters = 0;
-
 
             //check the entered password
             foreach (char enteredCharacters in characters)
@@ -216,18 +250,14 @@ namespace MedicalInstitution.ViewModel
                 {
                     illegalCharacters = illegalCharacters + 1;
                 }
-
-                // MessageBox.Show(chars.ToString());
             }
 
             if (upper < minUpper || lower < minLower || length < minLength || length > maxLength)
             {
-                //MessageBox.Show("Something's not right, your password does not meet the minimum security criteria");
                 return false;
             }
             else
             {
-                //code to proceed this step
                 return true;
 
             }
@@ -252,62 +282,54 @@ namespace MedicalInstitution.ViewModel
         private void LoginExecute()
         {
             
-            //string username = mainWindow.NameTextBox.Text;
+            
 
-            //// Hash password
-            //var hasher = new SHA256Managed();
-            //var unhashed = Encoding.Unicode.GetBytes(mainWindow.passwordBox.Password);
-            //var hashed = hasher.ComputeHash(unhashed);
-            //var hashedPassword = Convert.ToBase64String(hashed);
+            string username = mainWindow.NameTextBox.Text;
 
-            //string password = hashedPassword;
+            // Hash password
+            var hasher = new SHA256Managed();
+            var unhashed = Encoding.Unicode.GetBytes(mainWindow.passwordBox.Password);
+            var hashed = hasher.ComputeHash(unhashed);
+            var hashedPassword = Convert.ToBase64String(hashed);
 
-            //Service s = new Service();
+            string password = hashedPassword;
 
-            ////Checks if there is a username and password in the database
-            //tblGuest userLogin = s.GetUsernamePassword(username, password);
+            Service s = new Service();
+            
+            tblPatient patientLogin = s.GetUsernamePasswordPatient(username, password);
+            
+            if (patientLogin != null)
+            {
+                Xceed.Wpf.Toolkit.MessageBox.Show($"{ username}, dobrodošli.", "L-Medical Institution");
 
-            //if (userLogin != null)
-            //{
-            //    PrintMessage();
 
-            //    CakeMenu cakeMenu = new CakeMenu
-            //    {
-            //        Owner = mainWindow
-            //    };
-            //    mainWindow.Hide();
-            //    cakeMenu.ShowDialog();
-            //}
-            //else
-            //{
-            //    Xceed.Wpf.Toolkit.MessageBox.Show("Korisničko ime ili lozinka nisu ispravni,\n pokušajte opet.", "Nalog nije pronađen.");
-            //}
+                PatientMenu patientMenu = new PatientMenu
+                {
+                    Owner = mainWindow
+                };
+                mainWindow.Hide();
+                patientMenu.ShowDialog();
+            }
+            else if(usernameAdmin == mainWindow.NameTextBox.Text.ToString() && passwordAdmin == mainWindow.passwordBox.Password.ToString())
+            {
+                Xceed.Wpf.Toolkit.MessageBox.Show($"{usernameAdmin}, dobrodošli.", "L-Medical Institution");
+                AdminMenu adminMenu= new AdminMenu
+                {
+                    Owner = mainWindow
+                };
+                mainWindow.Hide();
+                adminMenu.ShowDialog();
+            }
+            else
+            {
+                Xceed.Wpf.Toolkit.MessageBox.Show("Korisničko ime ili lozinka nisu ispravni,\n pokušajte opet.", "Nalog nije pronađen.");
+            }
         }
-        
+
 
         private bool CanLoginExecute()
         {
-            if (Convert.ToBoolean(mainWindow.GenreM.IsChecked) || Convert.ToBoolean(mainWindow.GenreZ.IsChecked) || Convert.ToBoolean(mainWindow.GenreX.IsChecked) || Convert.ToBoolean(mainWindow.GenreN.IsChecked))
-            {
-
-                mainWindow.msgPol.Visibility = Visibility.Collapsed;
-                return true;
-            }
-            else if(doctorBool == true )
-            {
-                return false;
-            }
-            //else if(PasswordCorrect(mainWindow.txtLozinkaRegistracija.Text.ToString()) == false)
-            //{
-            //    return false;
-            //}
-            else
-            {
-                mainWindow.msgPol.Visibility = Visibility.Visible;
-                return false;
-            }
-
-            
+            return true;
         }
 
         public bool doctorBool;

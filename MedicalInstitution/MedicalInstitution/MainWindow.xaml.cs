@@ -1,20 +1,11 @@
 ﻿using MedicalInstitution.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Media;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MedicalInstitution
 {
@@ -65,7 +56,7 @@ namespace MedicalInstitution
 
         private void KorekcijaLozinke(object sender, RoutedEventArgs e)
         {
-            if (passwordBox.Password.Length <= 5)
+            if (passwordBox.Password.Length <= 7)
             {
                 passwordBox.BorderBrush = new SolidColorBrush(Colors.Red);
                 passwordBox.Foreground = new SolidColorBrush(Colors.Red);
@@ -325,8 +316,6 @@ namespace MedicalInstitution
             int minCharacter = 1;
             int minNumber = 1;
             int minLength = 8;
-            int maxLength = 30;
-
             //entered password
             string enteredPassword = txtLozinkaRegistracija.Text.ToString();
 
