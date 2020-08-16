@@ -6,10 +6,26 @@
         xmlns:local="clr-namespace:MedicalInstitution.Views"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="PatientMenu" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen"
+        Title="PatientMenu" Height="550" Width="500">
     <Grid>
+        <Button Name="Napusti"
+                Margin="20"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Click="Logout_Click">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Foreground="White">Odjavite se</TextBlock>
+                <materialDesign:PackIcon Kind="Logout"
+                                         VerticalAlignment="Center"
+                                         Margin="20,0,0,0"
+                                         Height="25"
+                                         Width="25" />
+            </StackPanel>
+        </Button>
         <Button Style="{StaticResource MaterialDesignRaisedButton}"
                 x:Name="btnPrijavi"
+                Margin="0 -200 0 0"
                 materialDesign:ButtonAssist.CornerRadius="20"
                 Visibility="{Binding Path=enablePrijavi}"
                 IsEnabled="{Binding Path=prijavi}"
@@ -19,8 +35,42 @@
                 FontWeight="Bold"
                 FontSize="18"
                 Foreground="White"
-                Width="150"
-                Margin="10,10,0,0"
-                Command="{Binding Login, UpdateSourceTrigger=PropertyChanged}">Prijavite se</Button>
+                Width="300"
+                Command="{Binding Review, UpdateSourceTrigger=PropertyChanged}">Podnesite zahtev za pregled</Button>
+        
+        <Grid x:Name="ReviewResult" Visibility="Collapsed">
+            <Border BorderThickness="2" BorderBrush="DeepPink" Width="400" Height="300" Margin="0 100 0 0">
+            <StackPanel>
+                    <TextBlock Foreground="DeepPink" FontSize="20" HorizontalAlignment="Center" Margin="20 30 20 0" TextWrapping="Wrap">Proveravaju se rezultati sa testiranja</TextBlock>
+                    <TextBlock Foreground="DeepPink"
+                               FontSize="20"
+                               HorizontalAlignment="Center"
+                               Margin="20 0 20 0"
+                               TextWrapping="Wrap">na Virus COVID-19</TextBlock>
+                    <TextBlock Foreground="Blue"
+                               FontSize="20"
+                               HorizontalAlignment="Center"
+                               Margin="20 30 20 0"
+                               TextWrapping="Wrap">Molimo Vas za strpljenje. . .</TextBlock>
+                    <ProgressBar Height="10" x:Name="progress" Margin="50 30 50 0"></ProgressBar>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock FontSize="15" Foreground="Blue" Margin="0 10 5 0">Preostalo: </TextBlock>
+                        <TextBlock FontSize="15"
+                                   x:Name="loading"
+                                   Foreground="DeepPink" Margin="0 10 0 0">3</TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" x:Name="ResultStack" Visibility="Collapsed"
+                                HorizontalAlignment="Center">
+                        <TextBlock FontSize="15"
+                                   Foreground="Blue"
+                                   Margin="0 30 5 0">Rezultati testa: </TextBlock>
+                        <TextBlock FontSize="15"
+                                   x:Name="resultTest"
+                                   Foreground="DeepPink"
+                                   Margin="0 30 0 0">pozitivan</TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
     </Grid>
 </Window>

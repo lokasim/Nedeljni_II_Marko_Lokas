@@ -23,5 +23,13 @@ namespace MedicalInstitution.Views
         {
             InitializeComponent();
         }
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+
+            MainWindow main = new MainWindow();
+
+            main.ShowDialog();
+        }
     }
 }

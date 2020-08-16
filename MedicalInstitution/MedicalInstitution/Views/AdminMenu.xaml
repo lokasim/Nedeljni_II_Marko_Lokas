@@ -22,5 +22,6 @@
                                          Width="25" />
             </StackPanel>
         </Button>
+        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30">Stranica u pripremi. . .</TextBlock>
     </Grid>
 </Window>
