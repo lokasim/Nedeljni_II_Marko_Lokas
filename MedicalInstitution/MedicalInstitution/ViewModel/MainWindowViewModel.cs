@@ -58,7 +58,7 @@ namespace MedicalInstitution.ViewModel
                 isUpdatePatient = value;
             }
         }
-        
+
         private List<tblDoctor> doctorList;
         public List<tblDoctor> DoctorList
         {
@@ -98,8 +98,8 @@ namespace MedicalInstitution.ViewModel
                 isUpdateDoctor = value;
             }
         }
-        string usernameAdmin;
-        string passwordAdmin;
+        readonly string usernameAdmin;
+        readonly string passwordAdmin;
         #endregion
 
         public MainWindowViewModel(MainWindow mainWindow)
@@ -140,7 +140,7 @@ namespace MedicalInstitution.ViewModel
                 {
                     Xceed.Wpf.Toolkit.MessageBox.Show("Niste uneli ispravno kredencijale admina u dokumentu ClinicAccess.txt\n\n1.Korisnicko ime:Vaše korisničko ime\n2.Lozinka: Vaša lozinka", "ClinicAccess.txt", MessageBoxButton.OK);
                 }
-                
+
             }
         }
 
@@ -281,8 +281,8 @@ namespace MedicalInstitution.ViewModel
         /// </summary>
         private void LoginExecute()
         {
-            
-            
+
+
 
             string username = mainWindow.NameTextBox.Text;
 
@@ -295,9 +295,9 @@ namespace MedicalInstitution.ViewModel
             string password = hashedPassword;
 
             Service s = new Service();
-            
+
             tblPatient patientLogin = s.GetUsernamePasswordPatient(username, password);
-            
+
             if (patientLogin != null)
             {
                 Xceed.Wpf.Toolkit.MessageBox.Show($"{ username}, dobrodošli.", "L-Medical Institution");
@@ -310,10 +310,10 @@ namespace MedicalInstitution.ViewModel
                 mainWindow.Hide();
                 patientMenu.ShowDialog();
             }
-            else if(usernameAdmin == mainWindow.NameTextBox.Text.ToString() && passwordAdmin == mainWindow.passwordBox.Password.ToString())
+            else if (usernameAdmin == mainWindow.NameTextBox.Text.ToString() && passwordAdmin == mainWindow.passwordBox.Password.ToString())
             {
                 Xceed.Wpf.Toolkit.MessageBox.Show($"{usernameAdmin}, dobrodošli.", "L-Medical Institution");
-                AdminMenu adminMenu= new AdminMenu
+                AdminMenu adminMenu = new AdminMenu
                 {
                     Owner = mainWindow
                 };
@@ -368,7 +368,7 @@ namespace MedicalInstitution.ViewModel
         private void NewPatientExecute()
         {
             PrintMessage();
-            
+
         }
         private bool CanNewPatientExecute()
         {
@@ -501,7 +501,7 @@ namespace MedicalInstitution.ViewModel
                 string poruka = Patient.NameSurname + ",\nUspešno ste se registrovali.";
                 Xceed.Wpf.Toolkit.MessageBox.Show(poruka, "Registracija pacijenta", MessageBoxButton.OK);
                 mainWindow.NameTextBox.Focus();
-                
+
                 mainWindow.txtCitizenship.Text = "";
                 mainWindow.txtHealthNumber.Text = "";
                 mainWindow.txtIDNumber.Text = "";

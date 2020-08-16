@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using MedicalInstitution.Command;
@@ -36,6 +32,7 @@ namespace MedicalInstitution.ViewModel
         {
             patientMenu.progress.Value = 0;
             patientMenu.ReviewResult.Visibility = System.Windows.Visibility.Visible;
+            patientMenu.ResultStack.Visibility = System.Windows.Visibility.Collapsed;
             for (int i = 0; i < 100; i++)
             {
                 patientMenu.btnPrijavi.IsEnabled = false;
@@ -70,7 +67,7 @@ namespace MedicalInstitution.ViewModel
             patientMenu.ResultStack.Visibility = System.Windows.Visibility.Visible;
             Random rnd = new Random();
             int randomNum = rnd.Next(0, 2);
-            if(randomNum == 1)
+            if (randomNum == 1)
             {
                 patientMenu.resultTest.Text = "Pozitivan test";
             }
