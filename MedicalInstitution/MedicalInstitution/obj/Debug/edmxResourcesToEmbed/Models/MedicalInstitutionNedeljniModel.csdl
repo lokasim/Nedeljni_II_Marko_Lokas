@@ -1,0 +1,513 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MedicalInstitutionNedeljniModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblAdministrator">
+    <Key>
+      <PropertyRef Name="AdministratorID" />
+    </Key>
+    <Property Name="AdministratorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameSurname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BLK" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="Int32" Nullable="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Citizenship" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UsernameLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PasswordLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblGender" Relationship="Self.FK_Admin_Gender" FromRole="tblAdministrator" ToRole="tblGender" />
+  </EntityType>
+  <EntityType Name="tblDailyMaintenance">
+    <Key>
+      <PropertyRef Name="DailyMaintenanceID" />
+    </Key>
+    <Property Name="DailyMaintenanceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateMaintenance" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="WorkingTime" Type="Int32" Nullable="false" />
+    <Property Name="DescriptionMaintenance" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Maintenance" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblMainternace" Relationship="Self.FK_DailyMaintenance_Mainternace" FromRole="tblDailyMaintenance" ToRole="tblMainternace" />
+  </EntityType>
+  <EntityType Name="tblDoctor">
+    <Key>
+      <PropertyRef Name="DoctorID" />
+    </Key>
+    <Property Name="DoctorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameSurname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BLK" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="Int32" Nullable="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Citizenship" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UsernameLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PasswordLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UniqueNumber" Type="Int32" Nullable="false" />
+    <Property Name="AccountNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Department" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ShiftInWhichHeWorks" Type="Int32" Nullable="false" />
+    <Property Name="ResponsiblePatientAdmission" Type="Int32" Nullable="false" />
+    <Property Name="SuperiorManager" Type="Int32" />
+    <NavigationProperty Name="tblGender" Relationship="Self.FK_Doctor_Gender" FromRole="tblDoctor" ToRole="tblGender" />
+    <NavigationProperty Name="tblManager" Relationship="Self.FK_Doctor_Manager" FromRole="tblDoctor" ToRole="tblManager" />
+    <NavigationProperty Name="tblShiftWork" Relationship="Self.FK_Doctor_ShiftWorks" FromRole="tblDoctor" ToRole="tblShiftWorks" />
+    <NavigationProperty Name="tblPatients" Relationship="Self.FK_Patient_UniqueNumberDoctor" FromRole="tblDoctor" ToRole="tblPatient" />
+  </EntityType>
+  <EntityType Name="tblGender">
+    <Key>
+      <PropertyRef Name="GenderID" />
+    </Key>
+    <Property Name="GenderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GenderSign" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblAdministrators" Relationship="Self.FK_Admin_Gender" FromRole="tblGender" ToRole="tblAdministrator" />
+    <NavigationProperty Name="tblDoctors" Relationship="Self.FK_Doctor_Gender" FromRole="tblGender" ToRole="tblDoctor" />
+    <NavigationProperty Name="tblMainternaces" Relationship="Self.FK_Mainternace_Gender" FromRole="tblGender" ToRole="tblMainternace" />
+    <NavigationProperty Name="tblManagers" Relationship="Self.FK_Manager_Gender" FromRole="tblGender" ToRole="tblManager" />
+    <NavigationProperty Name="tblPatients" Relationship="Self.FK_Patient_Gender" FromRole="tblGender" ToRole="tblPatient" />
+  </EntityType>
+  <EntityType Name="tblInstitution">
+    <Key>
+      <PropertyRef Name="InstitutionID" />
+    </Key>
+    <Property Name="InstitutionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InstitutionName" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="InstitutionOwner" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="InstitutionAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NumberOfFloors" Type="Int32" Nullable="false" />
+    <Property Name="NumberOfRoomsPerFloor" Type="Int32" Nullable="false" />
+    <Property Name="Terrace" Type="Int32" Nullable="false" />
+    <Property Name="Yard" Type="Int32" Nullable="false" />
+    <Property Name="NumberAPAmbulances" Type="Int32" Nullable="false" />
+    <Property Name="NumberAPDisabled" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tblMainternace">
+    <Key>
+      <PropertyRef Name="MainternaceID" />
+    </Key>
+    <Property Name="MainternaceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameSurname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BLK" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="Int32" Nullable="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Citizenship" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UsernameLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PasswordLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ExpandClinic" Type="Int32" Nullable="false" />
+    <Property Name="AccessibilityDisabled" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblDailyMaintenances" Relationship="Self.FK_DailyMaintenance_Mainternace" FromRole="tblMainternace" ToRole="tblDailyMaintenance" />
+    <NavigationProperty Name="tblGender" Relationship="Self.FK_Mainternace_Gender" FromRole="tblMainternace" ToRole="tblGender" />
+  </EntityType>
+  <EntityType Name="tblManager">
+    <Key>
+      <PropertyRef Name="ManagerID" />
+    </Key>
+    <Property Name="ManagerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameSurname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BLK" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="Int32" Nullable="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Citizenship" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UsernameLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PasswordLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FloorInstitution" Type="Int32" Nullable="false" />
+    <Property Name="MaxNumSupervising" Type="Int32" Nullable="false" />
+    <Property Name="MinNumRoomSupervised" Type="Int32" Nullable="false" />
+    <Property Name="NumOmissions" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblDoctors" Relationship="Self.FK_Doctor_Manager" FromRole="tblManager" ToRole="tblDoctor" />
+    <NavigationProperty Name="tblGender" Relationship="Self.FK_Manager_Gender" FromRole="tblManager" ToRole="tblGender" />
+  </EntityType>
+  <EntityType Name="tblPatient">
+    <Key>
+      <PropertyRef Name="PatientID" />
+    </Key>
+    <Property Name="PatientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameSurname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BLK" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="Int32" Nullable="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Citizenship" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UsernameLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PasswordLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HealthInsuranceCardNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ExpirationDateHealthInsurance" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="UniqueNumberDoctor" Type="Int32" />
+    <NavigationProperty Name="tblDoctor" Relationship="Self.FK_Patient_UniqueNumberDoctor" FromRole="tblPatient" ToRole="tblDoctor" />
+    <NavigationProperty Name="tblGender" Relationship="Self.FK_Patient_Gender" FromRole="tblPatient" ToRole="tblGender" />
+  </EntityType>
+  <EntityType Name="tblShiftWork">
+    <Key>
+      <PropertyRef Name="ShiftWorksID" />
+    </Key>
+    <Property Name="ShiftWorksID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShiftWorks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblDoctors" Relationship="Self.FK_Doctor_ShiftWorks" FromRole="tblShiftWorks" ToRole="tblDoctor" />
+  </EntityType>
+  <EntityType Name="vwAdmin">
+    <Key>
+      <PropertyRef Name="AdministratorID" />
+      <PropertyRef Name="NameSurname" />
+      <PropertyRef Name="BLK" />
+      <PropertyRef Name="Gender" />
+      <PropertyRef Name="DateOfBirth" />
+      <PropertyRef Name="Citizenship" />
+      <PropertyRef Name="UsernameLogin" />
+      <PropertyRef Name="PasswordLogin" />
+      <PropertyRef Name="GenderID" />
+      <PropertyRef Name="GenderSign" />
+      <PropertyRef Name="Expr1" />
+    </Key>
+    <Property Name="AdministratorID" Type="Int32" Nullable="false" />
+    <Property Name="NameSurname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BLK" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="Int32" Nullable="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Citizenship" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UsernameLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PasswordLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GenderID" Type="Int32" Nullable="false" />
+    <Property Name="GenderSign" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Expr1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vwDailyMaintenance">
+    <Key>
+      <PropertyRef Name="DailyMaintenanceID" />
+      <PropertyRef Name="DateMaintenance" />
+      <PropertyRef Name="WorkingTime" />
+      <PropertyRef Name="DescriptionMaintenance" />
+      <PropertyRef Name="Maintenance" />
+      <PropertyRef Name="MainternaceID" />
+      <PropertyRef Name="NameSurname" />
+      <PropertyRef Name="BLK" />
+      <PropertyRef Name="DateOfBirth" />
+    </Key>
+    <Property Name="DailyMaintenanceID" Type="Int32" Nullable="false" />
+    <Property Name="DateMaintenance" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="WorkingTime" Type="Int32" Nullable="false" />
+    <Property Name="DescriptionMaintenance" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Maintenance" Type="Int32" Nullable="false" />
+    <Property Name="MainternaceID" Type="Int32" Nullable="false" />
+    <Property Name="NameSurname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BLK" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="vwDoctor">
+    <Key>
+      <PropertyRef Name="DoctorID" />
+      <PropertyRef Name="NameSurname" />
+      <PropertyRef Name="BLK" />
+      <PropertyRef Name="Gender" />
+      <PropertyRef Name="DateOfBirth" />
+      <PropertyRef Name="Citizenship" />
+      <PropertyRef Name="UsernameLogin" />
+      <PropertyRef Name="PasswordLogin" />
+      <PropertyRef Name="UniqueNumber" />
+      <PropertyRef Name="AccountNumber" />
+      <PropertyRef Name="Department" />
+      <PropertyRef Name="ShiftInWhichHeWorks" />
+      <PropertyRef Name="ResponsiblePatientAdmission" />
+      <PropertyRef Name="ShiftWorksID" />
+      <PropertyRef Name="ShiftWorks" />
+      <PropertyRef Name="GenderID" />
+      <PropertyRef Name="GenderSign" />
+      <PropertyRef Name="Expr1" />
+      <PropertyRef Name="ManagerID" />
+      <PropertyRef Name="Expr2" />
+      <PropertyRef Name="FloorInstitution" />
+      <PropertyRef Name="MaxNumSupervising" />
+      <PropertyRef Name="NumOmissions" />
+      <PropertyRef Name="MinNumRoomSupervised" />
+    </Key>
+    <Property Name="DoctorID" Type="Int32" Nullable="false" />
+    <Property Name="NameSurname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BLK" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="Int32" Nullable="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Citizenship" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UsernameLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PasswordLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UniqueNumber" Type="Int32" Nullable="false" />
+    <Property Name="AccountNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Department" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ShiftInWhichHeWorks" Type="Int32" Nullable="false" />
+    <Property Name="SuperiorManager" Type="Int32" />
+    <Property Name="ResponsiblePatientAdmission" Type="Int32" Nullable="false" />
+    <Property Name="ShiftWorksID" Type="Int32" Nullable="false" />
+    <Property Name="ShiftWorks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GenderID" Type="Int32" Nullable="false" />
+    <Property Name="GenderSign" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Expr1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ManagerID" Type="Int32" Nullable="false" />
+    <Property Name="Expr2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FloorInstitution" Type="Int32" Nullable="false" />
+    <Property Name="MaxNumSupervising" Type="Int32" Nullable="false" />
+    <Property Name="NumOmissions" Type="Int32" Nullable="false" />
+    <Property Name="MinNumRoomSupervised" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vwMainternace">
+    <Key>
+      <PropertyRef Name="MainternaceID" />
+      <PropertyRef Name="NameSurname" />
+      <PropertyRef Name="BLK" />
+      <PropertyRef Name="Gender" />
+      <PropertyRef Name="DateOfBirth" />
+      <PropertyRef Name="Citizenship" />
+      <PropertyRef Name="UsernameLogin" />
+      <PropertyRef Name="PasswordLogin" />
+      <PropertyRef Name="ExpandClinic" />
+      <PropertyRef Name="AccessibilityDisabled" />
+      <PropertyRef Name="GenderID" />
+      <PropertyRef Name="GenderSign" />
+      <PropertyRef Name="Expr1" />
+    </Key>
+    <Property Name="MainternaceID" Type="Int32" Nullable="false" />
+    <Property Name="NameSurname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BLK" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="Int32" Nullable="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Citizenship" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UsernameLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PasswordLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ExpandClinic" Type="Int32" Nullable="false" />
+    <Property Name="AccessibilityDisabled" Type="Int32" Nullable="false" />
+    <Property Name="GenderID" Type="Int32" Nullable="false" />
+    <Property Name="GenderSign" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Expr1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vwManager">
+    <Key>
+      <PropertyRef Name="ManagerID" />
+      <PropertyRef Name="NameSurname" />
+      <PropertyRef Name="BLK" />
+      <PropertyRef Name="Gender" />
+      <PropertyRef Name="DateOfBirth" />
+      <PropertyRef Name="Citizenship" />
+      <PropertyRef Name="UsernameLogin" />
+      <PropertyRef Name="PasswordLogin" />
+      <PropertyRef Name="FloorInstitution" />
+      <PropertyRef Name="MaxNumSupervising" />
+      <PropertyRef Name="MinNumRoomSupervised" />
+      <PropertyRef Name="NumOmissions" />
+      <PropertyRef Name="GenderID" />
+      <PropertyRef Name="GenderSign" />
+      <PropertyRef Name="Expr1" />
+    </Key>
+    <Property Name="ManagerID" Type="Int32" Nullable="false" />
+    <Property Name="NameSurname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BLK" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="Int32" Nullable="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Citizenship" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UsernameLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PasswordLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FloorInstitution" Type="Int32" Nullable="false" />
+    <Property Name="MaxNumSupervising" Type="Int32" Nullable="false" />
+    <Property Name="MinNumRoomSupervised" Type="Int32" Nullable="false" />
+    <Property Name="NumOmissions" Type="Int32" Nullable="false" />
+    <Property Name="GenderID" Type="Int32" Nullable="false" />
+    <Property Name="GenderSign" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Expr1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vwPatient">
+    <Key>
+      <PropertyRef Name="PatientID" />
+      <PropertyRef Name="NameSurname" />
+      <PropertyRef Name="BLK" />
+      <PropertyRef Name="Gender" />
+      <PropertyRef Name="DateOfBirth" />
+      <PropertyRef Name="Citizenship" />
+      <PropertyRef Name="UsernameLogin" />
+      <PropertyRef Name="PasswordLogin" />
+      <PropertyRef Name="HealthInsuranceCardNumber" />
+      <PropertyRef Name="ExpirationDateHealthInsurance" />
+      <PropertyRef Name="DoctorID" />
+      <PropertyRef Name="Expr1" />
+      <PropertyRef Name="UniqueNumber" />
+      <PropertyRef Name="AccountNumber" />
+      <PropertyRef Name="Department" />
+      <PropertyRef Name="ShiftInWhichHeWorks" />
+      <PropertyRef Name="ResponsiblePatientAdmission" />
+      <PropertyRef Name="GenderID" />
+      <PropertyRef Name="GenderSign" />
+      <PropertyRef Name="Expr2" />
+    </Key>
+    <Property Name="PatientID" Type="Int32" Nullable="false" />
+    <Property Name="NameSurname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BLK" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="Int32" Nullable="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Citizenship" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UsernameLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PasswordLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HealthInsuranceCardNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ExpirationDateHealthInsurance" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="UniqueNumberDoctor" Type="Int32" />
+    <Property Name="DoctorID" Type="Int32" Nullable="false" />
+    <Property Name="Expr1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UniqueNumber" Type="Int32" Nullable="false" />
+    <Property Name="AccountNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Department" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ShiftInWhichHeWorks" Type="Int32" Nullable="false" />
+    <Property Name="ResponsiblePatientAdmission" Type="Int32" Nullable="false" />
+    <Property Name="SuperiorManager" Type="Int32" />
+    <Property Name="GenderID" Type="Int32" Nullable="false" />
+    <Property Name="GenderSign" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Expr2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Admin_Gender">
+    <End Role="tblGender" Type="Self.tblGender" Multiplicity="1" />
+    <End Role="tblAdministrator" Type="Self.tblAdministrator" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblGender">
+        <PropertyRef Name="GenderID" />
+      </Principal>
+      <Dependent Role="tblAdministrator">
+        <PropertyRef Name="Gender" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DailyMaintenance_Mainternace">
+    <End Role="tblMainternace" Type="Self.tblMainternace" Multiplicity="1" />
+    <End Role="tblDailyMaintenance" Type="Self.tblDailyMaintenance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMainternace">
+        <PropertyRef Name="MainternaceID" />
+      </Principal>
+      <Dependent Role="tblDailyMaintenance">
+        <PropertyRef Name="Maintenance" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Doctor_Gender">
+    <End Role="tblGender" Type="Self.tblGender" Multiplicity="1" />
+    <End Role="tblDoctor" Type="Self.tblDoctor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblGender">
+        <PropertyRef Name="GenderID" />
+      </Principal>
+      <Dependent Role="tblDoctor">
+        <PropertyRef Name="Gender" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Doctor_Manager">
+    <End Role="tblManager" Type="Self.tblManager" Multiplicity="0..1" />
+    <End Role="tblDoctor" Type="Self.tblDoctor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblManager">
+        <PropertyRef Name="ManagerID" />
+      </Principal>
+      <Dependent Role="tblDoctor">
+        <PropertyRef Name="SuperiorManager" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Doctor_ShiftWorks">
+    <End Role="tblShiftWorks" Type="Self.tblShiftWork" Multiplicity="1" />
+    <End Role="tblDoctor" Type="Self.tblDoctor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblShiftWorks">
+        <PropertyRef Name="ShiftWorksID" />
+      </Principal>
+      <Dependent Role="tblDoctor">
+        <PropertyRef Name="ShiftInWhichHeWorks" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patient_UniqueNumberDoctor">
+    <End Role="tblDoctor" Type="Self.tblDoctor" Multiplicity="0..1" />
+    <End Role="tblPatient" Type="Self.tblPatient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDoctor">
+        <PropertyRef Name="DoctorID" />
+      </Principal>
+      <Dependent Role="tblPatient">
+        <PropertyRef Name="UniqueNumberDoctor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mainternace_Gender">
+    <End Role="tblGender" Type="Self.tblGender" Multiplicity="1" />
+    <End Role="tblMainternace" Type="Self.tblMainternace" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblGender">
+        <PropertyRef Name="GenderID" />
+      </Principal>
+      <Dependent Role="tblMainternace">
+        <PropertyRef Name="Gender" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Manager_Gender">
+    <End Role="tblGender" Type="Self.tblGender" Multiplicity="1" />
+    <End Role="tblManager" Type="Self.tblManager" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblGender">
+        <PropertyRef Name="GenderID" />
+      </Principal>
+      <Dependent Role="tblManager">
+        <PropertyRef Name="Gender" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patient_Gender">
+    <End Role="tblGender" Type="Self.tblGender" Multiplicity="1" />
+    <End Role="tblPatient" Type="Self.tblPatient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblGender">
+        <PropertyRef Name="GenderID" />
+      </Principal>
+      <Dependent Role="tblPatient">
+        <PropertyRef Name="Gender" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MedicalInstitutionNedeljniEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblAdministrators" EntityType="Self.tblAdministrator" />
+    <EntitySet Name="tblDailyMaintenances" EntityType="Self.tblDailyMaintenance" />
+    <EntitySet Name="tblDoctors" EntityType="Self.tblDoctor" />
+    <EntitySet Name="tblGenders" EntityType="Self.tblGender" />
+    <EntitySet Name="tblInstitutions" EntityType="Self.tblInstitution" />
+    <EntitySet Name="tblMainternaces" EntityType="Self.tblMainternace" />
+    <EntitySet Name="tblManagers" EntityType="Self.tblManager" />
+    <EntitySet Name="tblPatients" EntityType="Self.tblPatient" />
+    <EntitySet Name="tblShiftWorks" EntityType="Self.tblShiftWork" />
+    <EntitySet Name="vwAdmins" EntityType="Self.vwAdmin" />
+    <EntitySet Name="vwDailyMaintenances" EntityType="Self.vwDailyMaintenance" />
+    <EntitySet Name="vwDoctors" EntityType="Self.vwDoctor" />
+    <EntitySet Name="vwMainternaces" EntityType="Self.vwMainternace" />
+    <EntitySet Name="vwManagers" EntityType="Self.vwManager" />
+    <EntitySet Name="vwPatients" EntityType="Self.vwPatient" />
+    <AssociationSet Name="FK_Admin_Gender" Association="Self.FK_Admin_Gender">
+      <End Role="tblGender" EntitySet="tblGenders" />
+      <End Role="tblAdministrator" EntitySet="tblAdministrators" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DailyMaintenance_Mainternace" Association="Self.FK_DailyMaintenance_Mainternace">
+      <End Role="tblMainternace" EntitySet="tblMainternaces" />
+      <End Role="tblDailyMaintenance" EntitySet="tblDailyMaintenances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Doctor_Gender" Association="Self.FK_Doctor_Gender">
+      <End Role="tblGender" EntitySet="tblGenders" />
+      <End Role="tblDoctor" EntitySet="tblDoctors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Doctor_Manager" Association="Self.FK_Doctor_Manager">
+      <End Role="tblManager" EntitySet="tblManagers" />
+      <End Role="tblDoctor" EntitySet="tblDoctors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Doctor_ShiftWorks" Association="Self.FK_Doctor_ShiftWorks">
+      <End Role="tblShiftWorks" EntitySet="tblShiftWorks" />
+      <End Role="tblDoctor" EntitySet="tblDoctors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patient_UniqueNumberDoctor" Association="Self.FK_Patient_UniqueNumberDoctor">
+      <End Role="tblDoctor" EntitySet="tblDoctors" />
+      <End Role="tblPatient" EntitySet="tblPatients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mainternace_Gender" Association="Self.FK_Mainternace_Gender">
+      <End Role="tblGender" EntitySet="tblGenders" />
+      <End Role="tblMainternace" EntitySet="tblMainternaces" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Manager_Gender" Association="Self.FK_Manager_Gender">
+      <End Role="tblGender" EntitySet="tblGenders" />
+      <End Role="tblManager" EntitySet="tblManagers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patient_Gender" Association="Self.FK_Patient_Gender">
+      <End Role="tblGender" EntitySet="tblGenders" />
+      <End Role="tblPatient" EntitySet="tblPatients" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

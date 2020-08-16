@@ -134,7 +134,7 @@ CREATE TABLE tblGender(
 CREATE TABLE tblAdministrator(
 	AdministratorID					int identity(1,1) NOT NULL,
 	NameSurname						nvarchar(100) NOT NULL,
-	JMBG							char(13) NOT NULL,
+	BLK								char(9) NOT NULL,
 	Gender							int NOT NULL,
 	DateOfBirth						date NOT NULL,
 	Citizenship						nvarchar(70) NOT NULL,
@@ -145,7 +145,7 @@ CREATE TABLE tblAdministrator(
 CREATE TABLE tblMainternace(
 	MainternaceID					int identity(1,1) NOT NULL,
 	NameSurname						nvarchar(100) NOT NULL,
-	JMBG							char(13) NOT NULL,
+	BLK								char(9) NOT NULL,
 	Gender							int NOT NULL,
 	DateOfBirth						date NOT NULL,
 	Citizenship						nvarchar(70) NOT NULL,
@@ -158,7 +158,7 @@ CREATE TABLE tblMainternace(
 CREATE TABLE tblManager(
 	ManagerID						int identity(1,1) NOT NULL,
 	NameSurname						nvarchar(100) NOT NULL,
-	JMBG							char(13) NOT NULL,
+	BLK								char(9) NOT NULL,
 	Gender							int NOT NULL,
 	DateOfBirth						date NOT NULL,
 	Citizenship						nvarchar(70) NOT NULL,
@@ -178,14 +178,14 @@ CREATE TABLE tblShiftWorks(
 CREATE TABLE tblDoctor(
 	DoctorID						int identity(1,1) NOT NULL,
 	NameSurname						nvarchar(100) NOT NULL,
-	JMBG							char(13) NOT NULL,
+	BLK								char(9) NOT NULL,
 	Gender							int NOT NULL,
 	DateOfBirth						date NOT NULL,
 	Citizenship						nvarchar(70) NOT NULL,
 	UsernameLogin					nvarchar(50) NOT NULL,
 	PasswordLogin					nvarchar(50) NOT NULL,
 	UniqueNumber					int NOT NULL,
-	AccountNumber					int NOT NULL,
+	AccountNumber					nvarchar(20) NOT NULL,
 	Department						nvarchar(100) NOT NULL,
 	ShiftInWhichHeWorks				int NOT NULL,
 	ResponsiblePatientAdmission		int NOT NULL,
@@ -195,7 +195,7 @@ CREATE TABLE tblDoctor(
 CREATE TABLE tblPatient(
 	PatientID						int identity(1,1) NOT NULL,
 	NameSurname						nvarchar(100) NOT NULL,
-	JMBG							char(13) NOT NULL,
+	BLK								char(9) NOT NULL,
 	Gender							int NOT NULL,
 	DateOfBirth						date NOT NULL,
 	Citizenship						nvarchar(70) NOT NULL,
@@ -329,7 +329,7 @@ VALUES('24-časovno dežurstvo')
 
 GO
 CREATE VIEW vwAdmin AS
-SELECT        dbo.tblAdministrator.AdministratorID, dbo.tblAdministrator.NameSurname, dbo.tblAdministrator.JMBG, dbo.tblAdministrator.Gender, dbo.tblAdministrator.DateOfBirth, dbo.tblAdministrator.Citizenship, 
+SELECT        dbo.tblAdministrator.AdministratorID, dbo.tblAdministrator.NameSurname, dbo.tblAdministrator.BLK, dbo.tblAdministrator.Gender, dbo.tblAdministrator.DateOfBirth, dbo.tblAdministrator.Citizenship, 
                          dbo.tblAdministrator.UsernameLogin, dbo.tblAdministrator.PasswordLogin, dbo.tblGender.GenderID, dbo.tblGender.GenderSign, dbo.tblGender.Gender AS Expr1
 FROM            dbo.tblAdministrator INNER JOIN
                          dbo.tblGender ON dbo.tblAdministrator.Gender = dbo.tblGender.GenderID
@@ -337,7 +337,7 @@ GO
 
 GO
 CREATE VIEW vwMainternace AS
-SELECT        dbo.tblMainternace.MainternaceID, dbo.tblMainternace.NameSurname, dbo.tblMainternace.JMBG, dbo.tblMainternace.Gender, dbo.tblMainternace.DateOfBirth, dbo.tblMainternace.Citizenship, 
+SELECT        dbo.tblMainternace.MainternaceID, dbo.tblMainternace.NameSurname, dbo.tblMainternace.BLK, dbo.tblMainternace.Gender, dbo.tblMainternace.DateOfBirth, dbo.tblMainternace.Citizenship, 
                          dbo.tblMainternace.UsernameLogin, dbo.tblMainternace.PasswordLogin, dbo.tblMainternace.ExpandClinic, dbo.tblMainternace.AccessibilityDisabled, dbo.tblGender.GenderID, dbo.tblGender.GenderSign, 
                          dbo.tblGender.Gender AS Expr1
 FROM            dbo.tblMainternace INNER JOIN
@@ -346,7 +346,7 @@ GO
 
 GO
 CREATE VIEW vwManager AS
-SELECT        dbo.tblManager.ManagerID, dbo.tblManager.NameSurname, dbo.tblManager.JMBG, dbo.tblManager.Gender, dbo.tblManager.DateOfBirth, dbo.tblManager.Citizenship, dbo.tblManager.UsernameLogin, 
+SELECT        dbo.tblManager.ManagerID, dbo.tblManager.NameSurname, dbo.tblManager.BLK, dbo.tblManager.Gender, dbo.tblManager.DateOfBirth, dbo.tblManager.Citizenship, dbo.tblManager.UsernameLogin, 
                          dbo.tblManager.PasswordLogin, dbo.tblManager.FloorInstitution, dbo.tblManager.MaxNumSupervising, dbo.tblManager.MinNumRoomSupervised, dbo.tblManager.NumOmissions, dbo.tblGender.GenderID, 
                          dbo.tblGender.GenderSign, dbo.tblGender.Gender AS Expr1
 FROM            dbo.tblManager INNER JOIN
@@ -355,7 +355,7 @@ GO
 
 GO
 CREATE VIEW vwDoctor AS
-SELECT        dbo.tblDoctor.DoctorID, dbo.tblDoctor.NameSurname, dbo.tblDoctor.JMBG, dbo.tblDoctor.Gender, dbo.tblDoctor.DateOfBirth, dbo.tblDoctor.Citizenship, dbo.tblDoctor.UsernameLogin, dbo.tblDoctor.PasswordLogin, 
+SELECT        dbo.tblDoctor.DoctorID, dbo.tblDoctor.NameSurname, dbo.tblDoctor.BLK, dbo.tblDoctor.Gender, dbo.tblDoctor.DateOfBirth, dbo.tblDoctor.Citizenship, dbo.tblDoctor.UsernameLogin, dbo.tblDoctor.PasswordLogin, 
                          dbo.tblDoctor.UniqueNumber, dbo.tblDoctor.AccountNumber, dbo.tblDoctor.Department, dbo.tblDoctor.ShiftInWhichHeWorks, dbo.tblDoctor.SuperiorManager, dbo.tblDoctor.ResponsiblePatientAdmission, 
                          dbo.tblShiftWorks.ShiftWorksID, dbo.tblShiftWorks.ShiftWorks, dbo.tblGender.GenderID, dbo.tblGender.GenderSign, dbo.tblGender.Gender AS Expr1, dbo.tblManager.ManagerID, dbo.tblManager.NameSurname AS Expr2, 
                          dbo.tblManager.FloorInstitution, dbo.tblManager.MaxNumSupervising, dbo.tblManager.NumOmissions, dbo.tblManager.MinNumRoomSupervised
@@ -368,7 +368,7 @@ GO
 
 GO
 CREATE VIEW vwPatient AS
-SELECT        dbo.tblPatient.PatientID, dbo.tblPatient.NameSurname, dbo.tblPatient.JMBG, dbo.tblPatient.Gender, dbo.tblPatient.DateOfBirth, dbo.tblPatient.Citizenship, dbo.tblPatient.UsernameLogin, dbo.tblPatient.PasswordLogin, 
+SELECT        dbo.tblPatient.PatientID, dbo.tblPatient.NameSurname, dbo.tblPatient.BLK, dbo.tblPatient.Gender, dbo.tblPatient.DateOfBirth, dbo.tblPatient.Citizenship, dbo.tblPatient.UsernameLogin, dbo.tblPatient.PasswordLogin, 
                          dbo.tblPatient.HealthInsuranceCardNumber, dbo.tblPatient.ExpirationDateHealthInsurance, dbo.tblPatient.UniqueNumberDoctor, dbo.tblDoctor.DoctorID, dbo.tblDoctor.NameSurname AS Expr1, dbo.tblDoctor.UniqueNumber, 
                          dbo.tblDoctor.AccountNumber, dbo.tblDoctor.Department, dbo.tblDoctor.ShiftInWhichHeWorks, dbo.tblDoctor.ResponsiblePatientAdmission, dbo.tblDoctor.SuperiorManager, dbo.tblGender.GenderID, dbo.tblGender.GenderSign, 
                          dbo.tblGender.Gender AS Expr2
@@ -379,7 +379,7 @@ GO
 
 CREATE VIEW vwDailyMaintenance AS
 SELECT        dbo.tblDailyMaintenance.DailyMaintenanceID, dbo.tblDailyMaintenance.DateMaintenance, dbo.tblDailyMaintenance.WorkingTime, dbo.tblDailyMaintenance.DescriptionMaintenance, dbo.tblDailyMaintenance.Maintenance, 
-                         dbo.tblMainternace.MainternaceID, dbo.tblMainternace.NameSurname, dbo.tblMainternace.JMBG, dbo.tblMainternace.DateOfBirth
+                         dbo.tblMainternace.MainternaceID, dbo.tblMainternace.NameSurname, dbo.tblMainternace.BLK, dbo.tblMainternace.DateOfBirth
 FROM            dbo.tblDailyMaintenance INNER JOIN
                          dbo.tblMainternace ON dbo.tblDailyMaintenance.Maintenance = dbo.tblMainternace.MainternaceID
 GO

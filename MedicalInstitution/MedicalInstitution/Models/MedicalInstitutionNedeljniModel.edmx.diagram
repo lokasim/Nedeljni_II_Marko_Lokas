@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="648a69c18e6346f7bcbdef3ffdf6b787" Name="Diagram1">
+        <EntityTypeShape EntityType="MedicalInstitutionNedeljniModel.tblAdministrator" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicalInstitutionNedeljniModel.tblDailyMaintenance" Width="1.5" PointX="5.25" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicalInstitutionNedeljniModel.tblDoctor" Width="1.5" PointX="8.25" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicalInstitutionNedeljniModel.tblGender" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicalInstitutionNedeljniModel.tblInstitution" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicalInstitutionNedeljniModel.tblMainternace" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicalInstitutionNedeljniModel.tblManager" Width="1.5" PointX="3" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicalInstitutionNedeljniModel.tblPatient" Width="1.5" PointX="10.5" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicalInstitutionNedeljniModel.tblShiftWork" Width="1.5" PointX="6" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicalInstitutionNedeljniModel.vwAdmin" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicalInstitutionNedeljniModel.vwDailyMaintenance" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicalInstitutionNedeljniModel.vwDoctor" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicalInstitutionNedeljniModel.vwMainternace" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicalInstitutionNedeljniModel.vwManager" Width="1.5" PointX="9.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedicalInstitutionNedeljniModel.vwPatient" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="MedicalInstitutionNedeljniModel.FK_Admin_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicalInstitutionNedeljniModel.FK_DailyMaintenance_Mainternace" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicalInstitutionNedeljniModel.FK_Doctor_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicalInstitutionNedeljniModel.FK_Doctor_Manager" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicalInstitutionNedeljniModel.FK_Doctor_ShiftWorks" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicalInstitutionNedeljniModel.FK_Patient_UniqueNumberDoctor" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicalInstitutionNedeljniModel.FK_Mainternace_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicalInstitutionNedeljniModel.FK_Manager_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="MedicalInstitutionNedeljniModel.FK_Patient_Gender" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MedicalInstitutionNedeljniModelStoreContainer" CdmEntityContainer="MedicalInstitutionNedeljniEntities">
+    <EntitySetMapping Name="tblAdministrators">
+      <EntityTypeMapping TypeName="MedicalInstitutionNedeljniModel.tblAdministrator">
+        <MappingFragment StoreEntitySet="tblAdministrator">
+          <ScalarProperty Name="AdministratorID" ColumnName="AdministratorID" />
+          <ScalarProperty Name="NameSurname" ColumnName="NameSurname" />
+          <ScalarProperty Name="BLK" ColumnName="BLK" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Citizenship" ColumnName="Citizenship" />
+          <ScalarProperty Name="UsernameLogin" ColumnName="UsernameLogin" />
+          <ScalarProperty Name="PasswordLogin" ColumnName="PasswordLogin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDailyMaintenances">
+      <EntityTypeMapping TypeName="MedicalInstitutionNedeljniModel.tblDailyMaintenance">
+        <MappingFragment StoreEntitySet="tblDailyMaintenance">
+          <ScalarProperty Name="DailyMaintenanceID" ColumnName="DailyMaintenanceID" />
+          <ScalarProperty Name="DateMaintenance" ColumnName="DateMaintenance" />
+          <ScalarProperty Name="WorkingTime" ColumnName="WorkingTime" />
+          <ScalarProperty Name="DescriptionMaintenance" ColumnName="DescriptionMaintenance" />
+          <ScalarProperty Name="Maintenance" ColumnName="Maintenance" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDoctors">
+      <EntityTypeMapping TypeName="MedicalInstitutionNedeljniModel.tblDoctor">
+        <MappingFragment StoreEntitySet="tblDoctor">
+          <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+          <ScalarProperty Name="NameSurname" ColumnName="NameSurname" />
+          <ScalarProperty Name="BLK" ColumnName="BLK" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Citizenship" ColumnName="Citizenship" />
+          <ScalarProperty Name="UsernameLogin" ColumnName="UsernameLogin" />
+          <ScalarProperty Name="PasswordLogin" ColumnName="PasswordLogin" />
+          <ScalarProperty Name="UniqueNumber" ColumnName="UniqueNumber" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="ShiftInWhichHeWorks" ColumnName="ShiftInWhichHeWorks" />
+          <ScalarProperty Name="ResponsiblePatientAdmission" ColumnName="ResponsiblePatientAdmission" />
+          <ScalarProperty Name="SuperiorManager" ColumnName="SuperiorManager" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblGenders">
+      <EntityTypeMapping TypeName="MedicalInstitutionNedeljniModel.tblGender">
+        <MappingFragment StoreEntitySet="tblGender">
+          <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+          <ScalarProperty Name="GenderSign" ColumnName="GenderSign" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblInstitutions">
+      <EntityTypeMapping TypeName="MedicalInstitutionNedeljniModel.tblInstitution">
+        <MappingFragment StoreEntitySet="tblInstitution">
+          <ScalarProperty Name="InstitutionID" ColumnName="InstitutionID" />
+          <ScalarProperty Name="InstitutionName" ColumnName="InstitutionName" />
+          <ScalarProperty Name="InstitutionOwner" ColumnName="InstitutionOwner" />
+          <ScalarProperty Name="InstitutionAddress" ColumnName="InstitutionAddress" />
+          <ScalarProperty Name="NumberOfFloors" ColumnName="NumberOfFloors" />
+          <ScalarProperty Name="NumberOfRoomsPerFloor" ColumnName="NumberOfRoomsPerFloor" />
+          <ScalarProperty Name="Terrace" ColumnName="Terrace" />
+          <ScalarProperty Name="Yard" ColumnName="Yard" />
+          <ScalarProperty Name="NumberAPAmbulances" ColumnName="NumberAPAmbulances" />
+          <ScalarProperty Name="NumberAPDisabled" ColumnName="NumberAPDisabled" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMainternaces">
+      <EntityTypeMapping TypeName="MedicalInstitutionNedeljniModel.tblMainternace">
+        <MappingFragment StoreEntitySet="tblMainternace">
+          <ScalarProperty Name="MainternaceID" ColumnName="MainternaceID" />
+          <ScalarProperty Name="NameSurname" ColumnName="NameSurname" />
+          <ScalarProperty Name="BLK" ColumnName="BLK" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Citizenship" ColumnName="Citizenship" />
+          <ScalarProperty Name="UsernameLogin" ColumnName="UsernameLogin" />
+          <ScalarProperty Name="PasswordLogin" ColumnName="PasswordLogin" />
+          <ScalarProperty Name="ExpandClinic" ColumnName="ExpandClinic" />
+          <ScalarProperty Name="AccessibilityDisabled" ColumnName="AccessibilityDisabled" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblManagers">
+      <EntityTypeMapping TypeName="MedicalInstitutionNedeljniModel.tblManager">
+        <MappingFragment StoreEntitySet="tblManager">
+          <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+          <ScalarProperty Name="NameSurname" ColumnName="NameSurname" />
+          <ScalarProperty Name="BLK" ColumnName="BLK" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Citizenship" ColumnName="Citizenship" />
+          <ScalarProperty Name="UsernameLogin" ColumnName="UsernameLogin" />
+          <ScalarProperty Name="PasswordLogin" ColumnName="PasswordLogin" />
+          <ScalarProperty Name="FloorInstitution" ColumnName="FloorInstitution" />
+          <ScalarProperty Name="MaxNumSupervising" ColumnName="MaxNumSupervising" />
+          <ScalarProperty Name="MinNumRoomSupervised" ColumnName="MinNumRoomSupervised" />
+          <ScalarProperty Name="NumOmissions" ColumnName="NumOmissions" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPatients">
+      <EntityTypeMapping TypeName="MedicalInstitutionNedeljniModel.tblPatient">
+        <MappingFragment StoreEntitySet="tblPatient">
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="NameSurname" ColumnName="NameSurname" />
+          <ScalarProperty Name="BLK" ColumnName="BLK" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Citizenship" ColumnName="Citizenship" />
+          <ScalarProperty Name="UsernameLogin" ColumnName="UsernameLogin" />
+          <ScalarProperty Name="PasswordLogin" ColumnName="PasswordLogin" />
+          <ScalarProperty Name="HealthInsuranceCardNumber" ColumnName="HealthInsuranceCardNumber" />
+          <ScalarProperty Name="ExpirationDateHealthInsurance" ColumnName="ExpirationDateHealthInsurance" />
+          <ScalarProperty Name="UniqueNumberDoctor" ColumnName="UniqueNumberDoctor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblShiftWorks">
+      <EntityTypeMapping TypeName="MedicalInstitutionNedeljniModel.tblShiftWork">
+        <MappingFragment StoreEntitySet="tblShiftWorks">
+          <ScalarProperty Name="ShiftWorksID" ColumnName="ShiftWorksID" />
+          <ScalarProperty Name="ShiftWorks" ColumnName="ShiftWorks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwAdmins">
+      <EntityTypeMapping TypeName="MedicalInstitutionNedeljniModel.vwAdmin">
+        <MappingFragment StoreEntitySet="vwAdmin">
+          <ScalarProperty Name="AdministratorID" ColumnName="AdministratorID" />
+          <ScalarProperty Name="NameSurname" ColumnName="NameSurname" />
+          <ScalarProperty Name="BLK" ColumnName="BLK" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Citizenship" ColumnName="Citizenship" />
+          <ScalarProperty Name="UsernameLogin" ColumnName="UsernameLogin" />
+          <ScalarProperty Name="PasswordLogin" ColumnName="PasswordLogin" />
+          <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+          <ScalarProperty Name="GenderSign" ColumnName="GenderSign" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwDailyMaintenances">
+      <EntityTypeMapping TypeName="MedicalInstitutionNedeljniModel.vwDailyMaintenance">
+        <MappingFragment StoreEntitySet="vwDailyMaintenance">
+          <ScalarProperty Name="DailyMaintenanceID" ColumnName="DailyMaintenanceID" />
+          <ScalarProperty Name="DateMaintenance" ColumnName="DateMaintenance" />
+          <ScalarProperty Name="WorkingTime" ColumnName="WorkingTime" />
+          <ScalarProperty Name="DescriptionMaintenance" ColumnName="DescriptionMaintenance" />
+          <ScalarProperty Name="Maintenance" ColumnName="Maintenance" />
+          <ScalarProperty Name="MainternaceID" ColumnName="MainternaceID" />
+          <ScalarProperty Name="NameSurname" ColumnName="NameSurname" />
+          <ScalarProperty Name="BLK" ColumnName="BLK" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwDoctors">
+      <EntityTypeMapping TypeName="MedicalInstitutionNedeljniModel.vwDoctor">
+        <MappingFragment StoreEntitySet="vwDoctor">
+          <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+          <ScalarProperty Name="NameSurname" ColumnName="NameSurname" />
+          <ScalarProperty Name="BLK" ColumnName="BLK" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Citizenship" ColumnName="Citizenship" />
+          <ScalarProperty Name="UsernameLogin" ColumnName="UsernameLogin" />
+          <ScalarProperty Name="PasswordLogin" ColumnName="PasswordLogin" />
+          <ScalarProperty Name="UniqueNumber" ColumnName="UniqueNumber" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="ShiftInWhichHeWorks" ColumnName="ShiftInWhichHeWorks" />
+          <ScalarProperty Name="SuperiorManager" ColumnName="SuperiorManager" />
+          <ScalarProperty Name="ResponsiblePatientAdmission" ColumnName="ResponsiblePatientAdmission" />
+          <ScalarProperty Name="ShiftWorksID" ColumnName="ShiftWorksID" />
+          <ScalarProperty Name="ShiftWorks" ColumnName="ShiftWorks" />
+          <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+          <ScalarProperty Name="GenderSign" ColumnName="GenderSign" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+          <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+          <ScalarProperty Name="FloorInstitution" ColumnName="FloorInstitution" />
+          <ScalarProperty Name="MaxNumSupervising" ColumnName="MaxNumSupervising" />
+          <ScalarProperty Name="NumOmissions" ColumnName="NumOmissions" />
+          <ScalarProperty Name="MinNumRoomSupervised" ColumnName="MinNumRoomSupervised" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwMainternaces">
+      <EntityTypeMapping TypeName="MedicalInstitutionNedeljniModel.vwMainternace">
+        <MappingFragment StoreEntitySet="vwMainternace">
+          <ScalarProperty Name="MainternaceID" ColumnName="MainternaceID" />
+          <ScalarProperty Name="NameSurname" ColumnName="NameSurname" />
+          <ScalarProperty Name="BLK" ColumnName="BLK" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Citizenship" ColumnName="Citizenship" />
+          <ScalarProperty Name="UsernameLogin" ColumnName="UsernameLogin" />
+          <ScalarProperty Name="PasswordLogin" ColumnName="PasswordLogin" />
+          <ScalarProperty Name="ExpandClinic" ColumnName="ExpandClinic" />
+          <ScalarProperty Name="AccessibilityDisabled" ColumnName="AccessibilityDisabled" />
+          <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+          <ScalarProperty Name="GenderSign" ColumnName="GenderSign" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwManagers">
+      <EntityTypeMapping TypeName="MedicalInstitutionNedeljniModel.vwManager">
+        <MappingFragment StoreEntitySet="vwManager">
+          <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+          <ScalarProperty Name="NameSurname" ColumnName="NameSurname" />
+          <ScalarProperty Name="BLK" ColumnName="BLK" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Citizenship" ColumnName="Citizenship" />
+          <ScalarProperty Name="UsernameLogin" ColumnName="UsernameLogin" />
+          <ScalarProperty Name="PasswordLogin" ColumnName="PasswordLogin" />
+          <ScalarProperty Name="FloorInstitution" ColumnName="FloorInstitution" />
+          <ScalarProperty Name="MaxNumSupervising" ColumnName="MaxNumSupervising" />
+          <ScalarProperty Name="MinNumRoomSupervised" ColumnName="MinNumRoomSupervised" />
+          <ScalarProperty Name="NumOmissions" ColumnName="NumOmissions" />
+          <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+          <ScalarProperty Name="GenderSign" ColumnName="GenderSign" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwPatients">
+      <EntityTypeMapping TypeName="MedicalInstitutionNedeljniModel.vwPatient">
+        <MappingFragment StoreEntitySet="vwPatient">
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="NameSurname" ColumnName="NameSurname" />
+          <ScalarProperty Name="BLK" ColumnName="BLK" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Citizenship" ColumnName="Citizenship" />
+          <ScalarProperty Name="UsernameLogin" ColumnName="UsernameLogin" />
+          <ScalarProperty Name="PasswordLogin" ColumnName="PasswordLogin" />
+          <ScalarProperty Name="HealthInsuranceCardNumber" ColumnName="HealthInsuranceCardNumber" />
+          <ScalarProperty Name="ExpirationDateHealthInsurance" ColumnName="ExpirationDateHealthInsurance" />
+          <ScalarProperty Name="UniqueNumberDoctor" ColumnName="UniqueNumberDoctor" />
+          <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="UniqueNumber" ColumnName="UniqueNumber" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="ShiftInWhichHeWorks" ColumnName="ShiftInWhichHeWorks" />
+          <ScalarProperty Name="ResponsiblePatientAdmission" ColumnName="ResponsiblePatientAdmission" />
+          <ScalarProperty Name="SuperiorManager" ColumnName="SuperiorManager" />
+          <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+          <ScalarProperty Name="GenderSign" ColumnName="GenderSign" />
+          <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
