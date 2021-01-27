@@ -1,5 +1,6 @@
 # Nedeljni_II_Marko_Lokas
 Weekly Task - Medical Institution (medical examination simulation)
+-background worker thread c#
 
 ![Screenshot_2](https://user-images.githubusercontent.com/33514039/105944051-d4e87e00-6062-11eb-8f87-bde5d577f1a0.jpg)
 
