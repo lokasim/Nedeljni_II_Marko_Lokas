@@ -2,6 +2,7 @@
 Weekly Task - Medical Institution (medical examination simulation)
 
 -background worker thread c#
+
 Before starting the project, it is necessary to:
 
 - run the sql script located in the repository,
